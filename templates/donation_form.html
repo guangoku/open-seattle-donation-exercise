@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Donation Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+    
+        h1 {
+            background-color: #009688;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+    
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+    
+        li {
+            margin: 10px 0;
+        }
+    
+        a {
+            text-decoration: none;
+            background-color: #009688;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            /* Ensure padding doesn't affect spacing */
+    
+        }
+    
+        a:hover {
+            background-color: #00796b;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Donation Registration</h1>
+    <form method="POST" action="/donation_register">
+        <label for="donor_name">Donor Name:</label>
+        <input type="text" name="donor_name" required><br>
+
+        <label for="donation_type">Donation Type:</label>
+        <select name="donation_type" required>
+            <option value="money">Money</option>
+            <option value="food">Food</option>
+            <option value="clothing">Clothing</option>
+            <option value="other">Other</option>
+        </select><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" required><br>
+
+        <label for="donation_date">Donation Date:</label>
+        <input type="datetime-local" name="donation_date" id="donation_date" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // JavaScript to set the default value to the current local time
+        const donationDateInput = document.getElementById('donation_date');
+        const currentDatetime = new Date().toISOString().slice(0, 16); // Format: 'YYYY-MM-DDTHH:mm'
+        donationDateInput.value = currentDatetime;
+    </script>
+    <ul>
+        <hr>
+        <li><a href="{{ url_for('donation_distribution') }}">Register Distribution</a></li>
+        <li><a href="{{ url_for('donation_reports') }}">Donation Reports</a></li>
+    </ul>
+</body>
+
+</html>

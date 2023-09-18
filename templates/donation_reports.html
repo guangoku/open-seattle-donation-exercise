@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Donation Reports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+    
+        h1 {
+            background-color: #009688;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+    
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+    
+        li {
+            margin: 10px 0;
+        }
+    
+        a {
+            text-decoration: none;
+            background-color: #009688;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    
+        a:hover {
+            background-color: #00796b;
+        }
+
+        /* Style the table */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #009688;
+            color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Reports</h1>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3" class="table-title">Total Quantity Summary</th>
+            </tr>
+            <tr>
+                <th>Donation Type</th>
+                <th>Total Donation</th>
+                <th>Total Distribution</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donation_type, donation_quantity, distribution_quantity in donation_totals %}
+            <tr>
+                <td>{{ donation_type }}</td>
+                <td>{{ donation_quantity }}</td>
+                <td>{{ distribution_quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+        <li><a href="{{ url_for('donation_register') }}">Register Donation</a></li>
+        <li><a href="{{ url_for('donation_distribution') }}">Register Distribution</a></li>
+    </ul>
+</body>
+
+</html>
